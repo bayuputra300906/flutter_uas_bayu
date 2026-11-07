@@ -46,6 +46,33 @@ Color categoryColor(String category) {
   return kPrimaryColor;
 }
 
+String defaultCategoryImage(String category) {
+  final cat = category.toLowerCase();
+  if (cat.contains('gunung') || cat.contains('pegunungan') || cat.contains('mountain')) {
+    return 'https://images.unsplash.com/photo-1544644181-1484b3fdfc62?auto=format&fit=crop&w=1200&q=85';
+  } else if (cat.contains('pantai') || cat.contains('beach')) {
+    return 'https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=1200&q=85';
+  } else if (cat.contains('budaya') || cat.contains('culture') || cat.contains('pura') || cat.contains('temple')) {
+    return 'https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?auto=format&fit=crop&w=1200&q=85';
+  } else if (cat.contains('kuliner') || cat.contains('food') || cat.contains('restaurant')) {
+    return 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1200&q=85';
+  }
+  return 'https://images.unsplash.com/photo-1570789210967-2cac24afeb00?auto=format&fit=crop&w=1200&q=85';
+}
+
+bool isValidDirectImageUrl(String url) {
+  final clean = url.trim().toLowerCase();
+  if (clean.isEmpty) return false;
+  // Link halaman web Pinterest/Instagram/dll bukan file gambar langsung
+  if (clean.contains('pinterest.com/pin/') ||
+      clean.contains('instagram.com/p/') ||
+      clean.contains('facebook.com') ||
+      clean.contains('google.com/url')) {
+    return false;
+  }
+  return clean.startsWith('http://') || clean.startsWith('https://');
+}
+
 String formatRupiah(double value) {
   if (value <= 0) return 'Gratis';
   final text = value.round().toString().replaceAllMapped(

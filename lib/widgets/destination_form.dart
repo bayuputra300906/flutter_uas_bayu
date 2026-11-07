@@ -80,8 +80,8 @@ class _DestinationFormState extends State<DestinationForm> {
       location: _location.text.trim(),
       category: _category,
       description: _description.text.trim(),
-      imageUrl: _image.text.trim().isEmpty
-          ? 'https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=1200&q=85'
+      imageUrl: _image.text.trim().isEmpty || !isValidDirectImageUrl(_image.text.trim())
+          ? defaultCategoryImage(_category)
           : _image.text.trim(),
       price: double.tryParse(_price.text.trim()) ?? 0.0,
       rating: double.tryParse(_rating.text.trim().replaceAll(',', '.')) ?? 4.5,
@@ -216,12 +216,29 @@ class _DestinationFormState extends State<DestinationForm> {
               TextFormField(
                 controller: _image,
                 keyboardType: TextInputType.url,
-                decoration: const InputDecoration(
+                decoration: InputDecoration(
                   labelText: 'URL Gambar (Opsional)',
                   hintText: 'https://images.unsplash.com/...',
-                  prefixIcon: Icon(Icons.image_rounded),
-                  border: OutlineInputBorder(),
-                  helperText: 'Biarkan kosong untuk menggunakan gambar default Bali',
+                  prefixIcon: const Icon(Icons.image_rounded),
+                  suffixIcon: IconButton(
+                    tooltip: 'Gunakan Foto Rekomendasi',
+                    icon: const Icon(Icons.auto_fix_high_rounded, color: kPrimaryColor),
+                    onPressed: () {
+                      setState(() {
+                        _image.text = defaultCategoryImage(_category);
+                      });
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content: Text('Foto rekomendasi berhasil diterapkan! ✨'),
+                          duration: Duration(seconds: 2),
+                          behavior: SnackBarBehavior.floating,
+                        ),
+                      );
+                    },
+                  ),
+                  border: const OutlineInputBorder(),
+                  helperText: 'Tips: Gunakan link langsung foto (.jpg/.png/Unsplash) atau tekan ikon tongkat ajaib di kanan.',
+                  helperMaxLines: 2,
                 ),
               ),
               const SizedBox(height: 16),

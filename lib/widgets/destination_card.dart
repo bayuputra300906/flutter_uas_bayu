@@ -21,6 +21,8 @@ class DestinationImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final catColor = categoryColor(destination.category);
+    final fallbackUrl = defaultCategoryImage(destination.category);
+
     final placeholder = Container(
       width: double.infinity,
       height: double.infinity,
@@ -40,14 +42,32 @@ class DestinationImage extends StatelessWidget {
       ),
     );
 
-    if (destination.imageUrl.trim().isEmpty) return placeholder;
+    // Dapatkan URL gambar utama yang valid, atau gunakan fallback berdasarkan kategori
+    final String activeUrl;
+    if (isValidDirectImageUrl(destination.imageUrl)) {
+      activeUrl = destination.imageUrl.trim();
+    } else {
+      activeUrl = fallbackUrl;
+    }
 
     return Image.network(
-      destination.imageUrl,
+      activeUrl,
       width: double.infinity,
       height: double.infinity,
       fit: fit,
-      errorBuilder: (context, error, stackTrace) => placeholder,
+      errorBuilder: (context, error, stackTrace) {
+        // Jika URL utama gagal, coba muat gambar fallback kategori sebelum menampilkan placeholder
+        if (activeUrl != fallbackUrl) {
+          return Image.network(
+            fallbackUrl,
+            width: double.infinity,
+            height: double.infinity,
+            fit: fit,
+            errorBuilder: (context, error, stackTrace) => placeholder,
+          );
+        }
+        return placeholder;
+      },
       loadingBuilder: (context, child, progress) {
         if (progress == null) return child;
         return Container(
