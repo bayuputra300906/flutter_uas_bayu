@@ -42,13 +42,9 @@ class DestinationImage extends StatelessWidget {
       ),
     );
 
-    // Dapatkan URL gambar utama yang valid, atau gunakan fallback berdasarkan kategori
-    final String activeUrl;
-    if (isValidDirectImageUrl(destination.imageUrl)) {
-      activeUrl = destination.imageUrl.trim();
-    } else {
-      activeUrl = fallbackUrl;
-    }
+    // Gunakan URL yang di-input pengguna jika ada, atau fallback kategori jika kosong
+    final trimmedUrl = destination.imageUrl.trim();
+    final String activeUrl = trimmedUrl.isNotEmpty ? trimmedUrl : fallbackUrl;
 
     return Image.network(
       activeUrl,

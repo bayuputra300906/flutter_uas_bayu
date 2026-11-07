@@ -55,8 +55,9 @@ String defaultCategoryImage(String category) {
     return 'https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=1200&q=85';
   } else if (cat.contains('budaya') || cat.contains('culture') || cat.contains('pura') || cat.contains('temple')) {
     return 'https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?auto=format&fit=crop&w=1200&q=85';
-  } else if (cat.contains('kuliner') || cat.contains('food') || cat.contains('restaurant')) {
-    return 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1200&q=85';
+  } else if (cat.contains('kuliner') || cat.contains('food') || cat.contains('restaurant') || cat.contains('babi')) {
+    // Foto kuliner khas Bali (Babi Guling / Hidangan Tradisional Bali)
+    return 'https://images.unsplash.com/photo-1570275239833-cf846839b0f8?auto=format&fit=crop&w=1200&q=85';
   }
   return 'https://images.unsplash.com/photo-1570789210967-2cac24afeb00?auto=format&fit=crop&w=1200&q=85';
 }
