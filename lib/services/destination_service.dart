@@ -56,7 +56,7 @@ class DestinationService {
       description:
           'Gunung berapi aktif dengan keindahan kaldera spektakuler dan Danau Batur. Jalur pendakian favorit untuk menikmati sunrise di atas awan, serta udara sejuk khas dataran tinggi Kintamani.',
       imageUrl:
-          'https://images.unsplash.com/photo-1544644181-1484b3fdfc62?auto=format&fit=crop&w=1200&q=85',
+          'https://images.unsplash.com/photo-1698529471890-fddb93a2954f?auto=format&fit=crop&w=1200&q=85',
       price: 100000,
       rating: 4.9,
       tags: ['Trekking', 'Sunrise Spot', 'Pemandangan Awan', 'Udara Sejuk'],

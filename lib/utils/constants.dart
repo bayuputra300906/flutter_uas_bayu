@@ -49,7 +49,8 @@ Color categoryColor(String category) {
 String defaultCategoryImage(String category) {
   final cat = category.toLowerCase();
   if (cat.contains('gunung') || cat.contains('pegunungan') || cat.contains('mountain')) {
-    return 'https://images.unsplash.com/photo-1544644181-1484b3fdfc62?auto=format&fit=crop&w=1200&q=85';
+    // Foto Gunung Agung Bali asli di atas awan saat matahari terbit
+    return 'https://images.unsplash.com/photo-1698529471890-fddb93a2954f?auto=format&fit=crop&w=1200&q=85';
   } else if (cat.contains('pantai') || cat.contains('beach')) {
     return 'https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=1200&q=85';
   } else if (cat.contains('budaya') || cat.contains('culture') || cat.contains('pura') || cat.contains('temple')) {
