@@ -21,84 +21,84 @@ class DestinationService {
   final http.Client _client;
   static const Duration _timeout = Duration(seconds: 10);
 
+  // Data fallback yang 100% selaras dengan tabel Supabase
   static final List<Destination> initialFallbackDestinations = [
     const Destination(
       id: 1,
-      name: 'Kelingking Beach',
-      location: 'Nusa Penida, Klungkung, Bali',
+      name: 'Pantai Kuta',
+      location: 'Badung, Bali',
       category: 'Pantai',
-      description:
-          'Kelingking Beach adalah salah satu destinasi paling spektakuler di Bali dengan tebing ikonik berbentuk T-Rex, pasir putih lembut, dan air laut biru toska jernih. Tempat favorit wisatawan dunia untuk fotografi pemandangan dramatis.',
-      imageUrl:
-          'https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=1200&q=85',
-      price: 25000,
-      rating: 4.8,
-      tags: ['24/7 Access', 'Scenic View', 'Island Friendly', 'Eco Friendly'],
+      description: 'Pantai populer di Bali dengan pemandangan matahari terbenam yang indah.',
+      imageUrl: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=85',
+      price: 20000,
+      rating: 4.5,
+      tags: ['Pantai Populer', 'Sunset View', 'Surfing', 'Akses Mudah'],
     ),
     const Destination(
       id: 2,
-      name: 'Tanah Lot Temple',
+      name: 'Tanah Lot',
       location: 'Tabanan, Bali',
-      category: 'Budaya',
-      description:
-          'Pura sakral yang bertengger gagah di atas bongkahan batu karang di tengah deburan ombak Samudra Hindia. Menyajikan panorama matahari terbenam (sunset) paling magis dan ikonik di Pulau Bali.',
-      imageUrl:
-          'https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?auto=format&fit=crop&w=1200&q=85',
+      category: 'Wisata Alam',
+      description: 'Pura yang berada di atas batu karang dengan panorama laut yang menawan.',
+      imageUrl: 'https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=1200&q=85',
       price: 30000,
-      rating: 4.7,
-      tags: ['Budaya Sakral', 'Sunset View', 'Spot Foto', 'Parkir Luas'],
+      rating: 4.8,
+      tags: ['Pura Karang', 'Sunset View', 'Spot Ikonik', 'Budaya'],
     ),
     const Destination(
       id: 3,
-      name: 'Gunung Batur Kintamani',
-      location: 'Kintamani, Bangli, Bali',
-      category: 'Pegunungan',
-      description:
-          'Gunung berapi aktif dengan keindahan kaldera spektakuler dan Danau Batur. Jalur pendakian favorit untuk menikmati sunrise di atas awan, serta udara sejuk khas dataran tinggi Kintamani.',
-      imageUrl:
-          'https://images.unsplash.com/photo-1698529471890-fddb93a2954f?auto=format&fit=crop&w=1200&q=85',
-      price: 100000,
-      rating: 4.9,
-      tags: ['Trekking', 'Sunrise Spot', 'Pemandangan Awan', 'Udara Sejuk'],
+      name: 'Danau Beratan',
+      location: 'Bedugul, Bali',
+      category: 'Wisata Alam',
+      description: 'Danau yang terkenal dengan Pura Ulun Danu Beratan.',
+      imageUrl: 'https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?auto=format&fit=crop&w=1200&q=85',
+      price: 50000,
+      rating: 4.7,
+      tags: ['Danau Sejuk', 'Candi Terapung', 'Taman Bunga', 'Spot Foto'],
     ),
     const Destination(
       id: 4,
-      name: 'Pura Ulun Danu Beratan',
-      location: 'Bedugul, Tabanan, Bali',
-      category: 'Wisata Alam',
-      description:
-          'Candi terapung legendaris di Danau Beratan dengan latar belakang perbukitan hijau berkabut. Terkenal sebagai salah satu pemandangan terindah di uang kertas pecahan Indonesia.',
-      imageUrl:
-          'https://images.unsplash.com/photo-1570789210967-2cac24afeb00?auto=format&fit=crop&w=1200&q=85',
-      price: 50000,
-      rating: 4.8,
-      tags: ['Danau Asri', 'Perahu Wisata', 'Spot Ikonik', 'Taman Bunga'],
+      name: 'Garuda Wisnu Kencana',
+      location: 'Badung, Bali',
+      category: 'Budaya',
+      description: 'Taman budaya dengan patung Garuda Wisnu Kencana yang megah.',
+      imageUrl: 'https://images.unsplash.com/photo-1604999333679-b86d54738315?auto=format&fit=crop&w=1200&q=85',
+      price: 85000,
+      rating: 4.6,
+      tags: ['Patung Megah', 'Tari Tradisional', 'Plaza Luas', 'Seni Budaya'],
     ),
     const Destination(
       id: 5,
-      name: 'Garuda Wisnu Kencana (GWK)',
-      location: 'Jimbaran, Badung, Bali',
-      category: 'Budaya',
-      description:
-          'Taman budaya seluas 60 hektar dengan mahakarya patung Garuda Wisnu Kencana setinggi 121 meter karya seniman Nyoman Nuarta, dilengkapi pertunjukan tari Kecak harian.',
-      imageUrl:
-          'https://images.unsplash.com/photo-1604999333679-b86d54738315?auto=format&fit=crop&w=1200&q=85',
-      price: 125000,
-      rating: 4.6,
-      tags: ['Tari Tradisional', 'Mahakarya Seni', 'Plaza Luas', 'Food Court'],
+      name: 'Ubud Monkey Forest',
+      location: 'Ubud, Bali',
+      category: 'Wisata Alam',
+      description: 'Kawasan hutan yang menjadi habitat monyet dan memiliki suasana alami.',
+      imageUrl: 'https://images.unsplash.com/photo-1539367628448-4bc5c9d171c8?auto=format&fit=crop&w=1200&q=85',
+      price: 80000,
+      rating: 4.4,
+      tags: ['Hutan Alami', 'Habitat Monyet', 'Pura Kuno', 'Udara Sejuk'],
     ),
     const Destination(
-      id: 6,
-      name: 'Ubud Monkey Forest Sanctuary',
-      location: 'Ubud, Gianyar, Bali',
-      category: 'Wisata Alam',
-      description:
-          'Cagar alam dan kompleks pura suci yang dinaungi hutan rindang dengan lebih dari 1000 ekor kera ekor panjang. Memberikan pengalaman harmoni antara alam, budaya, dan spiritualitas Bali.',
-      imageUrl:
-          'https://images.unsplash.com/photo-1539367628448-4bc5c9d171c8?auto=format&fit=crop&w=1200&q=85',
-      price: 80000,
-      rating: 4.7,
-      tags: ['Hutan Lindung', 'Fauna Liar', 'Pohon Kuno', 'Akses Mudah'],
+      id: 7,
+      name: 'Gunung Agung',
+      location: 'Karangasem, Bali',
+      category: 'Pegunungan',
+      description: 'Gunung tertinggi dan tersakral di Bali dengan pemandangan sunrise spektakuler di atas awan.',
+      imageUrl: 'https://images.unsplash.com/photo-1698529471890-fddb93a2954f?auto=format&fit=crop&w=1200&q=85',
+      price: 200000,
+      rating: 4.8,
+      tags: ['Trekking', 'Sunrise Spot', 'Puncak Tertinggi', 'Sangat Cantik'],
+    ),
+    const Destination(
+      id: 8,
+      name: 'Babi Guling',
+      location: 'Gianyar Bali',
+      category: 'Kuliner',
+      description: 'Kuliner tradisional khas Bali yang lezat dan otentik.',
+      imageUrl: 'https://images.unsplash.com/photo-1570275239833-cf846839b0f8?auto=format&fit=crop&w=1200&q=85',
+      price: 25000,
+      rating: 4.8,
+      tags: ['Kuliner Khas', 'Otentik', 'Gianyar', 'Enak'],
     ),
   ];
 
@@ -120,11 +120,10 @@ class DestinationService {
       );
       final list = jsonDecode(res.body) as List;
       if (list.isEmpty) {
-        return initialFallbackDestinations.map((d) => d.toJson()).toList();
+        return initialFallbackDestinations.map((d) => d.toJson()..['id'] = d.id).toList();
       }
       return list.cast<Map<String, dynamic>>();
     } catch (_) {
-      // Jika terjadi kendala koneksi, kembalikan data fallback lokal yang kaya
       return initialFallbackDestinations.map((d) => d.toJson()..['id'] = d.id).toList();
     }
   }

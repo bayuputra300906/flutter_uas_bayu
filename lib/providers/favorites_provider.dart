@@ -1,8 +1,8 @@
 import 'package:flutter/foundation.dart';
 
 class FavoritesProvider extends ChangeNotifier {
-  // Set otomatis mencegah data duplikat.
-  final Set<int> _ids = {1, 3}; // Inisialisasi awal dengan destinasi favorit
+  // Set otomatis mencegah data duplikat (menggunakan ID destinasi yang ada di Supabase: 1 = Pantai Kuta, 7 = Gunung Agung)
+  final Set<int> _ids = {1, 7};
 
   Set<int> get ids => Set.unmodifiable(_ids);
   int get count => _ids.length;
